@@ -1,339 +1,211 @@
-import { motion } from 'framer-motion'
-
-const cardStyle = {
-  background: 'rgba(255,255,255,0.05)',
-  border: '1px solid rgba(255,255,255,0.08)',
-  borderRadius: '20px',
-  padding: '18px',
-  backdropFilter: 'blur(10px)',
-}
-
-const buttonPrimary = {
-  padding: '12px 22px',
-  borderRadius: '16px',
-  border: 'none',
-  background: 'linear-gradient(90deg,#06b6d4,#2563eb)',
-  color: 'white',
-  fontWeight: '700',
-  fontSize: '14px',
-}
-
-const buttonSecondary = {
-  padding: '12px 22px',
-  borderRadius: '16px',
-  border: '1px solid rgba(255,255,255,0.12)',
-  background: 'rgba(255,255,255,0.04)',
-  color: 'white',
-  fontWeight: '600',
-  fontSize: '14px',
-}
-
 export default function App() {
+  const section = {
+    padding: '20px 16px',
+  }
+
+  const card = {
+    background: 'rgba(255,255,255,0.06)',
+    border: '1px solid rgba(255,255,255,0.08)',
+    borderRadius: '18px',
+    padding: '16px',
+    marginTop: '12px',
+  }
+
+  const btn1 = {
+    padding: '12px 18px',
+    borderRadius: '14px',
+    border: 'none',
+    background: 'linear-gradient(90deg,#06b6d4,#2563eb)',
+    color: '#fff',
+    fontWeight: '700',
+    fontSize: '14px',
+  }
+
+  const btn2 = {
+    padding: '12px 18px',
+    borderRadius: '14px',
+    border: '1px solid rgba(255,255,255,0.15)',
+    background: 'rgba(255,255,255,0.05)',
+    color: '#fff',
+    fontWeight: '700',
+    fontSize: '14px',
+  }
+
   return (
     <div
       style={{
         minHeight: '100vh',
-        background: 'radial-gradient(circle at top left, #0f172a, #020617 45%, #000 100%)',
+        background: 'linear-gradient(180deg, #0f172a 0%, #020617 55%, #000 100%)',
         color: 'white',
-        overflow: 'hidden',
-        position: 'relative',
         fontFamily: 'Arial, sans-serif',
       }}
     >
-      {/* Glow blobs */}
+      {/* NAVBAR */}
       <div
         style={{
-          position: 'absolute',
-          top: '-60px',
-          left: '-60px',
-          width: '220px',
-          height: '220px',
-          borderRadius: '50%',
-          background: 'rgba(34,211,238,0.18)',
-          filter: 'blur(70px)',
+          position: 'sticky',
+          top: 0,
+          zIndex: 10,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '16px',
+          background: 'rgba(0,0,0,0.45)',
+          backdropFilter: 'blur(8px)',
+          borderBottom: '1px solid rgba(255,255,255,0.08)',
         }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '-80px',
-          right: '-60px',
-          width: '260px',
-          height: '260px',
-          borderRadius: '50%',
-          background: 'rgba(168,85,247,0.18)',
-          filter: 'blur(80px)',
-        }}
-      />
-
-      <div style={{ position: 'relative', zIndex: 2 }}>
-        {/* Navbar */}
-        <nav
+      >
+        <div
           style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            padding: '18px 16px',
-            borderBottom: '1px solid rgba(255,255,255,0.08)',
-            background: 'rgba(255,255,255,0.03)',
-            backdropFilter: 'blur(10px)',
-            position: 'sticky',
-            top: 0,
-            zIndex: 10,
+            fontSize: '22px',
+            fontWeight: '900',
+            letterSpacing: '1px',
+            color: '#22d3ee',
+          }}
+        >
+          GAME ZONE X
+        </div>
+        <button style={btn2}>Login</button>
+      </div>
+
+      {/* HERO */}
+      <div style={section}>
+        <div style={{ color: '#22d3ee', fontSize: '12px', fontWeight: '800', letterSpacing: '3px' }}>
+          NEXT GEN GAMING
+        </div>
+
+        <h1
+          style={{
+            margin: '12px 0 0',
+            fontSize: '42px',
+            lineHeight: '1',
+            fontWeight: '900',
+          }}
+        >
+          PLAY
+          <br />
+          LIKE A PRO
+        </h1>
+
+        <p
+          style={{
+            marginTop: '14px',
+            color: '#cbd5e1',
+            fontSize: '15px',
+            lineHeight: '1.6',
+            maxWidth: '360px',
+          }}
+        >
+          Premium mobile-safe gaming landing page. Tournaments, rewards, store and esports vibe.
+        </p>
+
+        <div style={{ display: 'flex', gap: '10px', marginTop: '16px', flexWrap: 'wrap' }}>
+          <button style={btn1}>Start Game</button>
+          <button style={btn2}>Watch Trailer</button>
+        </div>
+
+        {/* HERO CARD */}
+        <div
+          style={{
+            ...card,
+            marginTop: '20px',
+            background:
+              'linear-gradient(135deg, rgba(34,211,238,0.12), rgba(168,85,247,0.10), rgba(255,255,255,0.04))',
           }}
         >
           <div
             style={{
-              fontSize: '20px',
-              fontWeight: '900',
-              letterSpacing: '1.5px',
-              background: 'linear-gradient(90deg,#22d3ee,#a855f7)',
-              WebkitBackgroundClip: 'text',
-              color: 'transparent',
-            }}
-          >
-            GAME ZONE X
-          </div>
-          <button style={buttonSecondary}>Login</button>
-        </nav>
-
-        {/* Hero */}
-        <section
-          style={{
-            padding: '28px 16px 18px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '18px',
-          }}
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <p
-              style={{
-                color: '#22d3ee',
-                fontSize: '12px',
-                fontWeight: '700',
-                letterSpacing: '3px',
-                textTransform: 'uppercase',
-                margin: 0,
-              }}
-            >
-              Next Gen Gaming
-            </p>
-
-            <h1
-              style={{
-                fontSize: '42px',
-                lineHeight: '0.95',
-                margin: '14px 0 0',
-                fontWeight: '900',
-              }}
-            >
-              <span
-                style={{
-                  background: 'linear-gradient(90deg,#22d3ee,#60a5fa,#a855f7)',
-                  WebkitBackgroundClip: 'text',
-                  color: 'transparent',
-                }}
-              >
-                PLAY
-              </span>
-              <br />
-              <span
-                style={{
-                  background: 'linear-gradient(90deg,#c084fc,#ec4899,#ef4444)',
-                  WebkitBackgroundClip: 'text',
-                  color: 'transparent',
-                }}
-              >
-                LIKE A PRO
-              </span>
-            </h1>
-
-            <p
-              style={{
-                marginTop: '16px',
-                color: '#cbd5e1',
-                fontSize: '15px',
-                lineHeight: '1.6',
-                maxWidth: '360px',
-              }}
-            >
-              Futuristic gaming landing page with neon vibe, tournaments, rewards,
-              premium UI and mobile-friendly layout.
-            </p>
-
-            <div
-              style={{
-                marginTop: '18px',
-                display: 'flex',
-                gap: '10px',
-                flexWrap: 'wrap',
-              }}
-            >
-              <button style={buttonPrimary}>Start Game</button>
-              <button style={buttonSecondary}>Watch Trailer</button>
-            </div>
-          </motion.div>
-
-          {/* Fake 3D Hero Box */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            style={{
-              ...cardStyle,
-              padding: '22px',
-              marginTop: '8px',
+              height: '220px',
+              borderRadius: '22px',
               background:
-                'linear-gradient(145deg, rgba(34,211,238,0.08), rgba(168,85,247,0.08), rgba(255,255,255,0.03))',
-            }}
-          >
-            <div
-              style={{
-                height: '220px',
-                borderRadius: '24px',
-                background:
-                  'radial-gradient(circle at 30% 30%, rgba(34,211,238,0.35), transparent 30%), radial-gradient(circle at 70% 70%, rgba(168,85,247,0.35), transparent 30%), linear-gradient(135deg, #0f172a, #020617, #111827)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                position: 'relative',
-                overflow: 'hidden',
-                transform: 'perspective(900px) rotateX(10deg) rotateY(-8deg)',
-                boxShadow: '0 25px 60px rgba(0,0,0,0.45)',
-              }}
-            >
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '18px',
-                  left: '18px',
-                  width: '90px',
-                  height: '90px',
-                  borderRadius: '18px',
-                  background: 'linear-gradient(135deg,#06b6d4,#2563eb)',
-                  transform: 'rotate(18deg)',
-                  boxShadow: '0 10px 30px rgba(6,182,212,0.35)',
-                }}
-              />
-              <div
-                style={{
-                  position: 'absolute',
-                  right: '22px',
-                  bottom: '24px',
-                  width: '110px',
-                  height: '110px',
-                  borderRadius: '50%',
-                  background: 'linear-gradient(135deg,#a855f7,#ec4899)',
-                  boxShadow: '0 10px 30px rgba(168,85,247,0.35)',
-                }}
-              />
-              <div
-                style={{
-                  position: 'absolute',
-                  left: '50%',
-                  top: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  textAlign: 'center',
-                }}
-              >
-                <div style={{ fontSize: '38px' }}>🎮</div>
-                <div style={{ fontWeight: '800', marginTop: '8px' }}>3D Gaming Arena</div>
-                <div style={{ fontSize: '12px', color: '#cbd5e1', marginTop: '4px' }}>
-                  Mobile Safe Preview
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </section>
-
-        {/* Features */}
-        <section style={{ padding: '10px 16px 0' }}>
-          <h2 style={{ fontSize: '24px', marginBottom: '14px' }}>Top Features</h2>
-
-          <div style={{ display: 'grid', gap: '12px' }}>
-            {[
-              ['⚡', 'Ultra Fast', 'Lag-free premium gaming experience'],
-              ['🏆', 'Tournaments', 'Daily battles and rewards'],
-              ['🛒', 'Gaming Store', 'Skins, packs and exclusive drops'],
-            ].map(([icon, title, text], i) => (
-              <motion.div
-                key={title}
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
-                style={cardStyle}
-              >
-                <div style={{ fontSize: '26px' }}>{icon}</div>
-                <div style={{ fontSize: '18px', fontWeight: '800', marginTop: '8px' }}>{title}</div>
-                <div style={{ color: '#cbd5e1', fontSize: '14px', marginTop: '6px' }}>{text}</div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* Tournament */}
-        <section style={{ padding: '24px 16px 0' }}>
-          <div
-            style={{
-              ...cardStyle,
-              background:
-                'linear-gradient(135deg, rgba(34,211,238,0.08), rgba(168,85,247,0.08))',
-            }}
-          >
-            <div style={{ fontSize: '12px', color: '#22d3ee', letterSpacing: '2px' }}>
-              LIVE EVENT
-            </div>
-            <h3 style={{ margin: '10px 0 6px', fontSize: '24px' }}>Cyber Clash Tournament</h3>
-            <p style={{ margin: 0, color: '#cbd5e1', lineHeight: '1.6' }}>
-              Join the weekly showdown and win rewards, coins and premium skins.
-            </p>
-
-            <div
-              style={{
-                marginTop: '16px',
-                display: 'flex',
-                justifyContent: 'space-between',
-                gap: '10px',
-                flexWrap: 'wrap',
-              }}
-            >
-              <div style={cardStyle}>
-                <div style={{ fontSize: '12px', color: '#94a3b8' }}>Prize Pool</div>
-                <div style={{ fontSize: '18px', fontWeight: '800' }}>₹50,000</div>
-              </div>
-              <div style={cardStyle}>
-                <div style={{ fontSize: '12px', color: '#94a3b8' }}>Players</div>
-                <div style={{ fontSize: '18px', fontWeight: '800' }}>128</div>
-              </div>
-            </div>
-
-            <button style={{ ...buttonPrimary, marginTop: '18px', width: '100%' }}>
-              Join Tournament
-            </button>
-          </div>
-        </section>
-
-        {/* Footer CTA */}
-        <section style={{ padding: '24px 16px 30px' }}>
-          <div
-            style={{
-              ...cardStyle,
+                'radial-gradient(circle at 25% 25%, rgba(34,211,238,0.25), transparent 25%), radial-gradient(circle at 75% 70%, rgba(168,85,247,0.25), transparent 25%), linear-gradient(135deg, #111827, #0f172a, #020617)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
               textAlign: 'center',
-              background:
-                'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(168,85,247,0.08))',
+              border: '1px solid rgba(255,255,255,0.08)',
             }}
           >
-            <div style={{ fontSize: '22px', fontWeight: '900' }}>Ready to dominate?</div>
-            <p style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.6' }}>
-              Upgrade this site anytime from GitHub and Vercel will auto update it.
-            </p>
-            <button style={{ ...buttonPrimary, width: '100%' }}>Launch Now</button>
+            <div style={{ fontSize: '44px' }}>🎮</div>
+            <div style={{ marginTop: '8px', fontSize: '22px', fontWeight: '900' }}>3D Gaming Arena</div>
+            <div style={{ marginTop: '6px', color: '#cbd5e1', fontSize: '13px' }}>Ultra Safe Mobile Version</div>
           </div>
-        </section>
+        </div>
+      </div>
+
+      {/* FEATURES */}
+      <div style={section}>
+        <h2 style={{ margin: 0, fontSize: '24px', fontWeight: '900' }}>Top Features</h2>
+
+        <div style={card}>
+          <div style={{ fontSize: '24px' }}>⚡</div>
+          <div style={{ marginTop: '8px', fontSize: '18px', fontWeight: '800' }}>Ultra Fast</div>
+          <div style={{ marginTop: '6px', color: '#cbd5e1', fontSize: '14px' }}>
+            Lag-free smooth gaming experience with premium UI.
+          </div>
+        </div>
+
+        <div style={card}>
+          <div style={{ fontSize: '24px' }}>🏆</div>
+          <div style={{ marginTop: '8px', fontSize: '18px', fontWeight: '800' }}>Tournaments</div>
+          <div style={{ marginTop: '6px', color: '#cbd5e1', fontSize: '14px' }}>
+            Join weekly esports battles and win exciting rewards.
+          </div>
+        </div>
+
+        <div style={card}>
+          <div style={{ fontSize: '24px' }}>🛒</div>
+          <div style={{ marginTop: '8px', fontSize: '18px', fontWeight: '800' }}>Gaming Store</div>
+          <div style={{ marginTop: '6px', color: '#cbd5e1', fontSize: '14px' }}>
+            Buy skins, bundles and exclusive premium packs.
+          </div>
+        </div>
+      </div>
+
+      {/* TOURNAMENT */}
+      <div style={section}>
+        <div
+          style={{
+            ...card,
+            background: 'linear-gradient(135deg, rgba(34,211,238,0.08), rgba(168,85,247,0.08))',
+          }}
+        >
+          <div style={{ color: '#22d3ee', fontSize: '12px', fontWeight: '800', letterSpacing: '2px' }}>
+            LIVE EVENT
+          </div>
+
+          <div style={{ marginTop: '8px', fontSize: '24px', fontWeight: '900' }}>Cyber Clash Tournament</div>
+
+          <div style={{ marginTop: '8px', color: '#cbd5e1', fontSize: '14px', lineHeight: '1.6' }}>
+            Weekly showdown with rewards, coins and premium skins.
+          </div>
+
+          <div style={{ display: 'flex', gap: '10px', marginTop: '14px', flexWrap: 'wrap' }}>
+            <div style={card}>
+              <div style={{ fontSize: '12px', color: '#94a3b8' }}>Prize Pool</div>
+              <div style={{ fontWeight: '900', fontSize: '18px' }}>₹50,000</div>
+            </div>
+            <div style={card}>
+              <div style={{ fontSize: '12px', color: '#94a3b8' }}>Players</div>
+              <div style={{ fontWeight: '900', fontSize: '18px' }}>128</div>
+            </div>
+          </div>
+
+          <button style={{ ...btn1, width: '100%', marginTop: '14px' }}>Join Tournament</button>
+        </div>
+      </div>
+
+      {/* FOOTER */}
+      <div style={{ padding: '20px 16px 30px' }}>
+        <div style={{ ...card, textAlign: 'center' }}>
+          <div style={{ fontSize: '22px', fontWeight: '900' }}>Ready to dominate?</div>
+          <div style={{ marginTop: '8px', color: '#cbd5e1', fontSize: '14px', lineHeight: '1.6' }}>
+            Update this site anytime from GitHub and Vercel auto redeploy karega.
+          </div>
+          <button style={{ ...btn1, width: '100%', marginTop: '14px' }}>Launch Now</button>
+        </div>
       </div>
     </div>
   )
-                }
+}
